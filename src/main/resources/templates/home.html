@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TODOs</title>
+</head>
+<body>
+
+<h1>Détail de mes TODOs</h1>
+
+<p th:if="${TODOs.isEmpty()}">Aucun TODO</p>
+<table th:unless="${TODOs.isEmpty()}" style="border: 1px solid black; border-collapse: collapse">
+    <tr style="border: 1px solid black">
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="TODO : ${TODOs}" style="border: 1px solid black">
+        <td th:text="${TODO.getName()}"></td>
+        <td th:text="${TODO.getDescription()}"></td>
+        <td th:text="${TODO.isDone() ? 'Fini' : 'Non fini'}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
